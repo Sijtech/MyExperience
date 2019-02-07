@@ -1,13 +1,33 @@
 package ArrayEx;
 import java.util.Arrays;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+
 import java.util.ArrayList;
 public class ArraysEx {
     
     public static void main(String[] args) {
         //run the following function
 //    	stringArrayAddNull();
-    	String[] myArray = {"Joe", null, null, "Fred"};
-    	String[] reorderedArray = reorderArray(myArray);  
+//    	String[] myArray = {"Joe", null, null, "Fred"};
+//    	String[] reorderedArray = reorderArray(myArray);
+    	jsonArrayToStringList();
+    }
+    /**
+     * transform a json Array to a ArrayList<String> and remove the unnecessaries quotes(")
+     * @author Joel
+     */
+    public static void jsonArrayToStringList() {
+    	//initialize the array
+    	JsonArray zrIds = new JsonArray();
+    	zrIds.add("pf_5_7127");
+    	zrIds.add("137673");
+    	ArrayList<String> ids = new ArrayList<String>();
+    	for (JsonElement id : zrIds) {
+    		ids.add(id.toString().replace("\"", ""));
+    	}
+        System.out.println(ids.get(0));
     }
     /**
      * In this example I checked, if I can add the value NULL to a string
